@@ -1,4 +1,4 @@
-name: Python CI
+name: Run Playwright Tests
 
 on:
   push:
@@ -11,23 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-      - name: Install Playwright browsers
-        run: |
-          python -m playwright install
+    - name: Install Playwright browsers
+      run: |
+        python -m playwright install --with-deps
 
-      - name: Run tests
-        run: |
-          pytest Day3_28_5_25/ --maxfail=1 --disable-warnings -v
+    - name: Run all test files
+      run: |
+        pytest Day3_28_5_25/ --maxfail=1 --disable-warnings -v
