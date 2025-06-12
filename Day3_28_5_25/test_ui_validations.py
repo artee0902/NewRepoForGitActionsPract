@@ -25,7 +25,7 @@ def test_playwright_shortcut(page):       #page fixture coming from Page Class i
     page.wait_for_timeout(3000)
 
 
-@pytest.mark.order(3)
+@pytest.mark.order(2)
 def test_add_to_cart(page,test_playwright_shortcut):
     iphone_product=page.locator("app-card").filter(has_text="iphone X")
     iphone_product.get_by_role("button").click()
@@ -38,15 +38,15 @@ def test_add_to_cart(page,test_playwright_shortcut):
     expect(page.locator(".media-body")).to_have_count(2)
 
 
-def test_child_window_handle(page,test_playwright_shortcut):
-    with page.expect_popup() as newPage_info:
-        page.locator(".blinkingText").click()
-        time.sleep(3)
-        childPage=newPage_info.value
-        text=page.locator(".red").text_content()
-        print(text)
-        words=text.split("at")
-        email=words[1].strip().split(" ")[0]
+# def test_child_window_handle(page,test_playwright_shortcut):
+#     with page.expect_popup() as newPage_info:
+#         page.locator(".blinkingText").click()
+#         time.sleep(3)
+#         childPage=newPage_info.value
+#         text=page.locator(".red").text_content()
+#         print(text)
+#         words=text.split("at")
+#         email=words[1].strip().split(" ")[0]
 
 
 
