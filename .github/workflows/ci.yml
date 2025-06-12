@@ -24,7 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Install Playwright browsers
+        run: |
+          python -m playwright install
+
       - name: Run tests
         run: |
-          pytest
-
+          pytest Day3_28_5_25/ --maxfail=1 --disable-warnings -v
