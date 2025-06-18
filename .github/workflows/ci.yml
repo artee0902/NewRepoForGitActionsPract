@@ -42,10 +42,11 @@ jobs:
     - name: Install Allure CLI and generate HTML report
       run: |
         sudo apt update
-        sudo apt install -y default-jre wget unzip
-        wget https://github.com/allure-framework/allure2/releases/latest/download/allure-2.27.0.zip
-        unzip allure-2.27.0.zip
-        ./allure-2.27.0/bin/allure generate allure-results -o allure-report --clean
+        sudo apt install -y default-jre wget unzip curl
+        LATEST_URL=$(curl -s https://api.github.com/repos/allure-framework/allure2/releases/latest | grep "browser_download_url" | grep zip | cut -d '"' -f 4)
+        wget $LATEST_URL -O allure-latest.zip
+        unzip allure-latest.zip -d allure
+        ./allure/*/bin/allure generate allure-results -o allure-report --clean
 
     - name: Upload Allure HTML report
       uses: actions/upload-artifact@v4
