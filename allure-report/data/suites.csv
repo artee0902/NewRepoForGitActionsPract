@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","8176","test_add_to_cart","Day3_28_5_25","Wed Jun 18 16:29:08 IST 2025","passed","Wed Jun 18 16:29:17 IST 2025","","test_ui_validations","",""
+"","6177","test_playwright_shortcut","Day3_28_5_25","Wed Jun 18 16:28:52 IST 2025","passed","Wed Jun 18 16:28:58 IST 2025","","test_PlaywrightBasics","",""
