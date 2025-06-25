@@ -1,3 +1,6 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","8176","test_add_to_cart","Day3_28_5_25","Wed Jun 18 16:29:08 IST 2025","passed","Wed Jun 18 16:29:17 IST 2025","","test_ui_validations","",""
-"","6177","test_playwright_shortcut","Day3_28_5_25","Wed Jun 18 16:28:52 IST 2025","passed","Wed Jun 18 16:28:58 IST 2025","","test_PlaywrightBasics","",""
+"","8252","test_add_to_cart","Day3_28_5_25","Tue Jun 24 17:10:19 IST 2025","passed","Tue Jun 24 17:10:28 IST 2025","","test_ui_validations","",""
+"","4246","test_hide_show[chromium]","Day3_28_5_25","Tue Jun 24 17:10:45 IST 2025","passed","Tue Jun 24 17:10:49 IST 2025","","test_frame_handling","",""
+"","6135","test_dialog_box[chromium]","Day3_28_5_25","Tue Jun 24 17:10:54 IST 2025","passed","Tue Jun 24 17:11:00 IST 2025","","test_frame_handling","",""
+"","6221","test_playwright_shortcut","Day3_28_5_25","Tue Jun 24 17:09:53 IST 2025","passed","Tue Jun 24 17:09:59 IST 2025","","test_PlaywrightBasics","",""
+"","1355","test_frame_handle[chromium]","Day3_28_5_25","Tue Jun 24 17:11:05 IST 2025","passed","Tue Jun 24 17:11:06 IST 2025","","test_frame_handling","",""

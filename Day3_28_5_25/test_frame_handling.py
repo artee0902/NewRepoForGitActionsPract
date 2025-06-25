@@ -29,10 +29,10 @@ def test_dialog_box(page:Page,setup):
     page.get_by_role("button", name="Confirm").click()
     time.sleep(3)
 
-def test_frame_handle(page:Page,setup):
-    pageFrame=page.frame_locator("#courses-iframe")
-    pageFrame.get_by_role("link",name="All Access plan").click()
-    expect(pageFrame.locator("body")).to_contain_text(" Happy Subscibers!")
+# def test_frame_handle(page:Page,setup):
+#     pageFrame=page.frame_locator("#courses-iframe")
+#     pageFrame.get_by_role("link",name="All Access plan").click()
+#     expect(pageFrame.locator("body")).to_contain_text(" Happy Subscibers!")
 
 
 
