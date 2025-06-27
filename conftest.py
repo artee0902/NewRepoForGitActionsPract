@@ -11,7 +11,7 @@ with open(config_path) as f:
 @pytest.fixture(scope="module")
 def page():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # Change to True for CI
+        browser = p.chromium.launch(headless=True)  # Change to True for CI
         context = browser.new_context()
         page = context.new_page()
         page.goto(config["url"])
