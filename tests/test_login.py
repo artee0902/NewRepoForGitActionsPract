@@ -8,6 +8,7 @@ from playwright.sync_api import expect
 @allure.story("Valid Login")
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.title("Verify valid login redirects to dashboard")
+
 def test_valid_login(login):
     # Validate user lands on shop/dashboard page after login
     assert "shop" in login.url.lower() or "dashboard" in login.url.lower()
@@ -20,19 +21,23 @@ def test_valid_login(login):
 @allure.severity(allure.severity_level.NORMAL)
 @allure.title("Add multiple products to cart and verify")
 
-def test_add_multiple_products(login):
+def test_add_multiple_products(login):  # login is the page
     products = ["iphone X", "Nokia Edge"]
 
     for product_name in products:
-        product_card = login.locator("app-card").filter(
-            has=login.locator(f"text={product_name}")
-        )
+        # Use more reliable :has-text locator
+        product_card = login.locator(f"app-card:has-text('{product_name}')")
         product_card.locator("button:has-text('Add')").click()
 
-    login.get_by_text("Checkout").click()
+    # Wait for cart button and click it
+    checkout_button = login.get_by_text("Checkout")
+    checkout_button.wait_for(state="visible", timeout=5000)
+    checkout_button.click()
 
-    # Assertion: number of items in cart matches number of added products
-    expect(login.locator(".media-body")).to_have_count(len(products))
+    # Assert number of items in cart
+    cart_items = login.locator(".media-body")
+    expect(cart_items).to_have_count(len(products), timeout=5000)
+
 
 
 # @allure.epic("E-Commerce App")
