@@ -31,7 +31,7 @@ jobs:
 
     - name: Run Playwright tests with Allure results
       run: |
-        pytest Day3_28_5_25/ --alluredir=allure-results --disable-warnings -v
+        pytest tests/ --alluredir=allure-results --disable-warnings -v
 
     - name: Upload Allure results as artifact
       uses: actions/upload-artifact@v4
