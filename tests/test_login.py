@@ -8,7 +8,6 @@ from playwright.sync_api import expect
 @allure.story("Valid Login")
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.title("Verify valid login redirects to dashboard")
-@pytest.mark.order(1)
 def test_valid_login(login):
     # Validate user lands on shop/dashboard page after login
     assert "shop" in login.url.lower() or "dashboard" in login.url.lower()
@@ -21,7 +20,6 @@ def test_valid_login(login):
 @allure.severity(allure.severity_level.NORMAL)
 @allure.title("Add multiple products to cart and verify")
 
-@pytest.mark.order(2)
 def test_add_multiple_products(login):
     products = ["iphone X", "Nokia Edge"]
 
