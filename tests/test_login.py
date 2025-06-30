@@ -11,6 +11,7 @@ def test_valid_login(login):
     # login is the page object returned by fixture
     assert "shop" in login.url.lower() or "dashboard" in login.url.lower()
 
+
 @allure.epic("E-Commerce App")
 @allure.feature("Cart Functionality")
 @allure.story("Add Multiple Products")
