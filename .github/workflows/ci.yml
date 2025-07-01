@@ -2,9 +2,9 @@ name: Playwright UI Tests
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "githubaction" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "githubaction" ]
 
 jobs:
   test:
