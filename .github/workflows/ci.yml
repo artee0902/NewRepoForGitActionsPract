@@ -25,17 +25,25 @@ jobs:
           pip install -r requirements.txt
 
       - name: Install Playwright Browsers
+        run: python -m playwright install
+
+      - name: Install Allure CLI
         run: |
-          python -m playwright install
+          sudo apt-get update
+          sudo apt-get install -y openjdk-11-jre
+          wget https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
+          tar -zxvf allure-2.27.0.tgz
+          sudo mv allure-2.27.0 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/bin/allure
 
       - name: Run single test and generate Allure results
         run: |
-          pytest tests/test_drp.py::test_profile_dropdown_visible_options --alluredir=allure-results --headed --maxfail=1 --disable-warnings -q
+          pytest tests/test_drp.py::test_profile_dropdown_visible_options --alluredir=allure-results --maxfail=1 --disable-warnings -q
 
       - name: Generate Allure HTML Report
         run: |
           allure generate allure-results --clean -o allure-report
-        continue-on-error: true  # Optional: avoids breaking the job if no results are found
+        continue-on-error: true
 
       - name: Upload Allure Raw Results
         uses: actions/upload-artifact@v4
@@ -43,8 +51,4 @@ jobs:
           name: allure-raw-results
           path: allure-results
 
-      - name: Upload Allure HTML Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-html-report
-          path: allure-report
+      - name: Upload
