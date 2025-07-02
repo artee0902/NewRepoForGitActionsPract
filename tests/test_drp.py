@@ -2,6 +2,7 @@ import pytest
 import allure
 from pages.dashboard_page import DashboardPage
 from playwright.sync_api import expect
+import time
 
 @allure.epic("OrangeHRM Dashboard")
 @allure.feature("Profile Dropdown")
