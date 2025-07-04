@@ -55,3 +55,4 @@ def test_change_password_page(login):
     dashboard.click_change_password()
     heading = login.locator("h6.oxd-text.oxd-text--h6.orangehrm-main-title")
     expect(heading).to_have_text("Update Password")
+    time.sleep(3)
