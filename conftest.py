@@ -9,3 +9,8 @@ def page():
         page = context.new_page()
         yield page
         browser.close()
+
+
+#
+# #def page():
+#     page.goto()
