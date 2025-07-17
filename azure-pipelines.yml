@@ -1,0 +1,37 @@
+trigger:
+  - master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
+      addToPath: true
+
+  - script: python -m pip install --upgrade pip
+    displayName: 'Upgrade pip'
+
+  - script: pip install -r requirements.txt
+    displayName: 'Install dependencies'
+
+  - script: python -m playwright install
+    displayName: 'Install Playwright browsers'
+
+  - script: pytest --html=pytest_html_report.html --junitxml=report.xml
+    displayName: 'Run tests with pytest'
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(System.DefaultWorkingDirectory)/pytest_html_report.html'
+      artifact: 'pytest_html_report'
+      publishLocation: 'pipeline'
+    displayName: 'Publish Pytest HTML Report'
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(System.DefaultWorkingDirectory)/allure-results'
+      artifact: 'allure-results'
+      publishLocation: 'pipeline'
+    displayName: 'Publish Allure Results'
